@@ -16,11 +16,14 @@ func (g *Game) Update() error {
 const (
 	screenWidth, screenHeight = 640, 360
 	boidCount = 500
+	viewRadius = 13
+	adjRate = 0.015
 )
 
 var (
 	green = color.RGBA{10, 255, 50, 255}
 	boids  [boidCount]*Boid
+	boidMap [screenWidth + 1][screenHeight + 1]int
 )
 
 func (g *Game) Layout(_, _ int) (w, h int) {
@@ -37,6 +40,12 @@ func (g *Game) Draw(screen *ebiten.Image) {
 }
 
 func main() {
+	for i, row := range boidMap {
+		for j, _ := range row {
+			boidMap[i][j] = -1
+		}
+	}
+	
 	for i := 0; i < boidCount; i++ {
 		createBoid(i)
 	}
