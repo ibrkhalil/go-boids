@@ -12,11 +12,11 @@ const (
 )
 
 var (
-	matrixA = [matrixSize][matrixSize]int{}
-	matrixB = [matrixSize][matrixSize]int{}
-	result = [matrixSize][matrixSize]int{}
-	rwLock = sync.RWMutex{}
-	cond = sync.NewCond(rwLock.RLocker())
+	matrixA   = [matrixSize][matrixSize]int{}
+	matrixB   = [matrixSize][matrixSize]int{}
+	result    = [matrixSize][matrixSize]int{}
+	rwLock    = sync.RWMutex{}
+	cond      = sync.NewCond(rwLock.RLocker())
 	waitGroup = sync.WaitGroup{}
 )
 
